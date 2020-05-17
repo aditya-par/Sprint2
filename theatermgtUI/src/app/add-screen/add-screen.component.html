@@ -1,0 +1,91 @@
+<div class = "container-fluid mb-5">
+    <h1>Add Screen</h1>
+    <div class="container">
+        <form #screenForm="ngForm" (ngSubmit)="addScreen(screenForm)" novalidate>
+
+            <div class="form-group">
+                <label class="form-group-label">Theater</label>
+                <select class="custom-select" #theaterId="ngModel" name="theaterId" required [(ngModel)]="screenModel.theaterId">
+                    <option selected value="">Choose Theater</option>
+                    <option *ngFor="let theater of selectedTheaterList" value="{{theater.theaterId}}">{{theater.theaterId}}</option>
+                </select>
+                <div *ngIf="theaterId.invalid && (theaterId.dirty || theaterId.touched)" class="alert alert-danger">
+                    <small *ngIf="theaterId.errors.required">
+                       Please choose the Theater.
+                    </small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group-label">Screen Name</label>
+                <input type="text" #screenName="ngModel" required  pattern="^[a-zA-Z][a-zA-Z ]+" maxlength="20" class="form-control" name="screenName" [(ngModel)]="screenModel.screenName"> 
+                <div *ngIf="screenName.errors && (screenName.dirty || screenName.touched)" class="alert alert-danger">
+                  <div [hidden]="!screenName.errors.required">
+                    Screen Name is required
+                  </div>
+                  <div [hidden]="!screenName.errors.pattern">
+                    Only alphabets allowed
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group-label">Rows</label>
+                <input type="text" #rows="ngModel" required  pattern="^\d{2}$" maxlength="2" class="form-control" name="rows" [(ngModel)]="screenModel.rows"> 
+                <div *ngIf="rows.errors && (rows.dirty || rows.touched)" class="alert alert-danger">
+                  <div [hidden]="!rows.errors.required">
+                    Rows is required
+                  </div>
+                  <div [hidden]="!rows.errors.pattern">
+                    Only numeric data
+                  </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-group-label">Columns</label>
+                <input type="text" #columns="ngModel" required  pattern="^\d{2}$" maxlength="2" class="form-control" name="columns" [(ngModel)]="screenModel.columns"> 
+                <div *ngIf="columns.errors && (columns.dirty || columns.touched)" class="alert alert-danger">
+                  <div [hidden]="!columns.errors.required">
+                    Columns is required
+                  </div>
+                  <div [hidden]="!columns.errors.pattern">
+                    Only numeric data
+                  </div>
+                </div>
+            </div>
+
+            <div>
+                <button [disabled]="screenForm.form.invalid" class="btn btn-primary" type="submit">Add Screen</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="container" *ngIf="show">
+        <h1>Added Screen Detail</h1>
+            <table class="table">
+                <tr>
+                    <th>Screen Id</th><td>{{screenresp.screenId}}</td>
+                </tr>
+                <tr>
+                    <th>Theater Id</th><td>{{screenresp.theaterId}}</td>
+                </tr>
+                <tr>
+                    <th>Screen Name</th><td>{{screenresp.screenName}}</td>
+                </tr>
+                <tr>
+                    <th>Show List</th><td>{{screenresp.showList}}</td>
+                </tr>
+                <tr>
+                    <th>Rows</th><td>{{screenresp.rows}}</td>
+                </tr>
+                <tr>
+                    <th>Columns</th><td>{{screenresp.columns}}</td>
+                </tr>
+            </table>
+    </div>
+
+</div>
+
+

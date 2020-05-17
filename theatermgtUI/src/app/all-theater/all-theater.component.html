@@ -1,0 +1,30 @@
+<h2 style="margin-left: 15%;">Theater Details</h2>
+<div class="form-group">
+    <div class= "container">
+        <table class ="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Theater Id</th>
+                    <th>Theater Name</th>
+                    <th>Theater City</th>
+                    <th>Movie List</th>
+                    <th>Screen List</th>
+                    <th>Manager Name</th>
+                    <th>Manager Contact</th>
+                </tr>
+        
+            </thead>
+            <tbody *ngFor="let theater of theaters">
+                <tr>
+                    <th scope="row">{{theater.theaterId}}</th>
+                    <td>{{theater.theaterName}}</td>
+                    <td>{{theater.theaterCity}}</td>
+                    <td>{{theater.movieList}}</td>
+                    <td>{{theater.ScreenList}}</td>
+                    <td>{{theater.managerName}}</td>
+                    <td>{{theater.managerContact}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

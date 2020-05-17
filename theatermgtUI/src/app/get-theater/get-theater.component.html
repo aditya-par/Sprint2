@@ -1,0 +1,48 @@
+<div class = "container-fluid mb-5">
+    <h1>Get Theater Detail</h1>
+    <form #getTheaterForm = "ngForm" (ngSubmit)="getTheater(getTheaterForm)">
+        <div class="form-group">
+            <label class="form-group'level">Theater Id</label>
+            <input type="text" required #theaterId="ngModel" pattern="^\d+$" name="theaterId" class="form-control" ngModel>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="theaterId.errors && (theaterId.dirty || theaterId.touched)">
+            <div *ngif="theaterId.errors.required"> 
+                Theater Id is required
+            </div>
+        
+            <div *ngIf="theaterId.errors.pattern">
+                   Theater Id should be numeric
+            </div>
+        </div>
+
+        <button [disabled]="getTheaterForm.form.invalid" class="btn btn-primary" type="submit">Find</button>
+    </form>
+
+
+    <div class="container" *ngIf="check">
+        <table class="table">
+            <tr>
+                <th>Theater Id</th><td>{{theater.theaterId}}</td>
+            </tr>
+            <tr>
+                <th>Theater Name</th><td>{{theater.theaterName}}</td>
+            </tr>
+            <tr>
+                <th>Theater City</th><td>{{theater.theaterCity}}</td>
+            </tr>
+            <tr>
+                <th>Movie Ids</th><td>{{theater.movieList}}</td>
+            </tr>
+            <tr>
+                <th>Screen List</th><td>{{theater.screenList}}</td>
+            </tr>
+            <tr>
+                <th>Manager Name</th><td>{{theater.managerName}}</td>
+            </tr>
+            <tr>
+                <th>Manager Contact</th><td>{{theater.managerContact}}</td>
+            </tr>
+        </table>
+    </div>
+</div>   

@@ -1,0 +1,25 @@
+<div class = "container-fluid mb-5">
+    <h1>Delete Theater</h1>
+    <form #deleteForm = "ngForm" (ngSubmit)="deleteTheater(deleteForm)">
+        <div class="form-group">
+            <label class="form-group'level">Theater Id</label>
+            <input type="text" required #theaterId="ngModel" pattern="^\d+$" name="theaterId" class="form-control" ngModel>
+        </div>
+
+        <div class="alert alert-danger" *ngIf="theaterId.errors && (theaterId.dirty || theaterId.touched)">
+            <div *ngif="theaterId.errors.required"> 
+                Theater Id is required
+            </div>
+        
+            <div *ngIf="theaterId.errors.pattern">
+                   Theater Id should be numeric
+            </div>
+        </div>
+
+        <button [disabled]="deleteForm.form.invalid" class="btn btn-primary" type="submit">Delete</button>
+    </form>
+</div>
+<div class="container" *ngIf="show">
+    <small style="color: red;">{{response}}</small>
+ </div>
+

@@ -1,0 +1,28 @@
+<h1>Theater Details</h1>
+<div class="form-group">
+    <div class= "container">
+        <table class ="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Screen Id</th>
+                    <th>Theater Id</th>
+                    <th>Screen Name</th>
+                    <th>Show List</th>
+                    <th>Rows</th>
+                    <th>Columns</th>
+                </tr>
+        
+            </thead>
+            <tbody *ngFor="let screen of screens">
+                <tr>
+                    <th scope="row">{{screen.screenId}}</th>
+                    <td>{{screen.theaterId}}</td>
+                    <td>{{screen.screenName}}</td>
+                    <td>{{screen.showList}}</td>
+                    <td>{{screen.rows}}</td>
+                    <td>{{screen.columns}}</td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

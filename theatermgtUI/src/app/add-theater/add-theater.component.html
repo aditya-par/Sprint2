@@ -1,0 +1,103 @@
+<div class = "container-fluid mb-5">
+    <h1>Add Theater</h1>
+    <form #addTheaterForm="ngForm" (ngSubmit)="onSubmitAddTheater(addTheaterForm)" novalidate>
+
+        <div class="form-group">
+            <label class="form-group-level">Theater Name</label>
+            <input type="text" required #theaterName="ngModel" 
+                [class.is-invalid]="theaterName.invalid && theaterName.touched" 
+                class = "form-control" name="theaterName" [(ngModel)]="theaterModel.theaterName">
+            <small class ="text-danger" [class.d-none]="(theaterName.valid || theaterName.untouched)" >Theater Name is Required</small>
+        </div>
+
+        <div class="form-group">
+            <label class="form-group-level">Theater City</label>
+            <input type="text" required #theaterCity="ngModel" 
+                [class.is-invalid]="theaterCity.invalid && theaterCity.touched"
+                class = "form-control" name="theaterCity" [(ngModel)]="theaterModel.theaterCity">
+            <small class ="text-danger" 
+            [class.d-none]="theaterCity.valid || theaterCity.untouched" >Theater City is Required</small>
+        </div>
+
+        <div class="form-group">
+            <label class="form-group-level">Manager Name</label>
+            <input type="text" required #managerName="ngModel" 
+                [class.is-invalid]="managerName.invalid && managerName.touched"
+                class="form-control" name = "managerName" [(ngModel)]="theaterModel.managerName">
+            <small class ="text-danger" 
+            [class.d-none]="managerName.valid || managerName.untouched" >Manager Name is Required</small>
+        </div>
+
+        <!-- <div class="form-group">
+            <label class="form-group-level">Manager Contact Number</label>
+            <input type="text" required #managerContact="ngModel" pattern="^\d{10}$" 
+                [class.is-invalid]="managerContact.invalid && managerContact.touched"
+                class="form-control" name="managerContact" [(ngModel)]="theaterModel.managerContact">
+            <div *ngIf="managerContact.errors && (managerContact.invalid || managerContact.touched)" class="text-danger">
+                <div [hidden]="!managerContact.errors.required">
+                    Manager contact is required
+                </div>
+                <div [hidden]="!managerContact.errors.pattern">
+                    Only 10 digits 
+                </div>
+            </div>
+        </div> -->
+        
+        <div class="form-group">
+            <label class="form-group-label">Manager Contact</label>
+            <input type="text" #managerContact="ngModel" required  pattern="^\d{10}$" maxlength="10" class="form-control" name="managerContact" [(ngModel)]="theaterModel.managerContact"> 
+            <div *ngIf="managerContact.errors && (managerContact.dirty || managerContact.touched)"  class="alert alert-danger">
+              <div [hidden]="!managerContact.errors.required">
+                Manager Contact is required
+              </div>
+              <div [hidden]="!managerContact.errors.pattern">
+                Only alphabets allowed
+              </div>
+            </div>
+        </div>
+
+        <br/>
+        <button [disabled]="addTheaterForm.form.invalid" class="btn btn-primary" type="submit">Add Theater</button>
+
+    </form>
+
+    <div class="container" *ngIf="show">
+        <h1>Added Theater Detail</h1>
+            <table class="table">
+                <!-- <tr>
+                    <th>Theater Name</th><td>{{theater.theaterName}}</td>
+                </tr>
+                <tr>
+                    <th>Theater City</th><td>{{theater.theaterCity}}</td>
+                </tr>
+                <tr>
+                    <th>Manager Name</th><td>{{theater.managerName}}</td>
+                </tr>
+                <tr>
+                    <th>Manager Contact</th><td>{{theater.managerContact}}</td>
+                </tr> -->
+                <tr>
+                    <th>Theater Id</th><td>{{theaterresp.theaterId}}</td>
+                </tr>
+                <tr>
+                    <th>Theater Name</th><td>{{theaterresp.theaterName}}</td>
+                </tr>
+                <tr>
+                    <th>Theater City</th><td>{{theaterresp.theaterCity}}</td>
+                </tr>
+                <tr>
+                    <th>Movie Ids</th><td>{{theaterresp.movieList}}</td>
+                </tr>
+                <tr>
+                    <th>Screen List</th><td>{{theaterresp.screenList}}</td>
+                </tr>
+                <tr>
+                    <th>Manager Name</th><td>{{theaterresp.managerName}}</td>
+                </tr>
+                <tr>
+                    <th>Manager Contact</th><td>{{theaterresp.managerContact}}</td>
+                </tr>
+            </table>
+    </div>
+
+</div>

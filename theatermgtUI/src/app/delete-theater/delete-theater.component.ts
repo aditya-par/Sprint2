@@ -11,7 +11,7 @@ export class DeleteTheaterComponent implements OnInit {
 
   service:TheaterServiceService;
   show:boolean=false;
-  response:string="";
+  response:boolean;
 
   constructor(service:TheaterServiceService) {
     this.service=service;
@@ -21,16 +21,16 @@ export class DeleteTheaterComponent implements OnInit {
   }
 
   deleteTheater(deleteForm:any){
-    let theaterId = deleteForm.value;
+    let theaterId = deleteForm.value.theaterId;
     console.log(theaterId);
-    let result : Observable<String> = this.service.deleteTheater(theaterId);
-    result.subscribe((ans:String)=>{
-    this.response="Deleted successfully";
+    let result : Observable<boolean> = this.service.deleteTheater(theaterId);
+    result.subscribe((ans:boolean)=>{
+    this.response=true;
     console.log(ans);
     this.show=true;
   },
   error =>{
-    this.response="Invalid Id"
+    this.response=false;
     this.show=true;
     console.log("Error "+error)
     });

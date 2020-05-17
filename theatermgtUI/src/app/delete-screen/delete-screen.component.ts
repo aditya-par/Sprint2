@@ -5,20 +5,18 @@ import { screen } from '../models/screen';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-get-screen',
-  templateUrl: './get-screen.component.html',
-  styleUrls: ['./get-screen.component.css']
+  selector: 'app-delete-screen',
+  templateUrl: './delete-screen.component.html',
+  styleUrls: ['./delete-screen.component.css']
 })
-export class GetScreenComponent implements OnInit {
+export class DeleteScreenComponent implements OnInit {
 
   service:TheaterServiceService;
   screenList:screenResponse[]=[];
   selectedScreenList:Array<screen>=[];
 
-  screen:screenResponse=null;
-result:any;
-  check:boolean=false;
-  errorShow=false;
+  response:boolean;
+  show:boolean=false;
   
   constructor(service:TheaterServiceService) {
     this.service=service;
@@ -32,26 +30,25 @@ result:any;
         {
             //console.log(theater);
             this.selectedScreenList.push(screen);
-            //console.log(this.selectedScreenList);
+            console.log(this.selectedScreenList);
         });
       });
-    }
+  }
 
-    getScreen(screenForm:any){
-      let screenId = screenForm.value.screenId;
-      console.log(screenId);
-      this.result=this.service.getScreen(screenId);
-     this.result.subscribe((screen:screenResponse) =>{
-        this.screen=screen;
-        this.check=true;
-        this.errorShow=false;
-    },
-      error =>{
-        this.errorShow=true;
-        this.check=false;
-        console.log("Error "+error)
-      });
-
-    }
+  deleteScreen(deleteForm:any){
+    let screenId = deleteForm.value.screenId;
+    console.log(screenId);
+    let result : Observable<boolean> = this.service.deleteScreen(screenId);
+    result.subscribe((ans:boolean)=>{
+    this.response=true;
+    console.log(ans);
+    this.show=true;
+  },
+  error =>{
+    this.response=false;
+    this.show=true;
+    console.log("Error "+error)
+    });
+  }
 
 }

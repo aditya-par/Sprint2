@@ -16,7 +16,8 @@ export class AllScreenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.fetchAllScreens().subscribe(screens=>{this.screens=screens});
+    this.service.fetchAllScreens().subscribe(screens=>{this.screens=screens
+      console.log(this.screens)});
   }
 
 

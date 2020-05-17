@@ -39,11 +39,10 @@ export class TheaterServiceService {
       return result;
     }
 
-    deleteTheater(theaterId:number):Observable<String>{
+    deleteTheater(theaterId:number):Observable<boolean>{
       let url = this.baseTheaterUrl+"/delete/"+theaterId;
-      let result: Observable<String> = this.client.delete<String>(url);
+      let result: Observable<boolean> = this.client.delete<boolean>(url);
       return result;
-      // return this.client.delete<number[]>("http://localhost:8086/theaters/delete/"+theaterId);
     }
 
     addScreen(screen:screen):Observable<screenResponse>{
@@ -58,9 +57,15 @@ export class TheaterServiceService {
       return observable;
     }
 
-    getScreen(screenId:number):Observable<screenResponse>{
+    getScreen(screenId:any):Observable<screenResponse>{
       let url = this.baseScreenUrl+"/get/"+screenId;
       let result:Observable<screenResponse> = this.client.get<screenResponse>(url);
+      return result;
+    }
+
+    deleteScreen(screenId:number):Observable<boolean>{
+      let url = this.baseScreenUrl+"/delete/"+screenId;
+      let result: Observable<boolean> = this.client.delete<boolean>(url);
       return result;
     }
 }

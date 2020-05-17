@@ -13,6 +13,7 @@ import { AddScreenComponent } from './add-screen/add-screen.component';
 import { DeleteTheaterComponent } from './delete-theater/delete-theater.component';
 import { GetScreenComponent } from './get-screen/get-screen.component';
 import { AllScreenComponent } from './all-screen/all-screen.component';
+import { DeleteScreenComponent } from './delete-screen/delete-screen.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AllScreenComponent } from './all-screen/all-screen.component';
     DeleteTheaterComponent,
     GetScreenComponent,
     AllScreenComponent,
+    DeleteScreenComponent,
   ],
   imports: [
     BrowserModule,

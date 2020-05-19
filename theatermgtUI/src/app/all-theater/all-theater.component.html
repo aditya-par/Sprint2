@@ -1,4 +1,5 @@
-<h2 style="margin-left: 15%;">Theater Details</h2>
+<h1 class="text-center">Theater Details</h1>
+<br/>
 <div class="form-group">
     <div class= "container">
         <table class ="table">
@@ -8,21 +9,25 @@
                     <th>Theater Name</th>
                     <th>Theater City</th>
                     <th>Movie List</th>
-                    <th>Screen List</th>
+                    <!-- <th>Screen List</th> -->
                     <th>Manager Name</th>
                     <th>Manager Contact</th>
+                    <th>Screen List</th>
                 </tr>
         
             </thead>
             <tbody *ngFor="let theater of theaters">
                 <tr>
-                    <th scope="row">{{theater.theaterId}}</th>
+                    <td>{{theater.theaterId}}</td>
                     <td>{{theater.theaterName}}</td>
                     <td>{{theater.theaterCity}}</td>
                     <td>{{theater.movieList}}</td>
-                    <td>{{theater.ScreenList}}</td>
                     <td>{{theater.managerName}}</td>
                     <td>{{theater.managerContact}}</td>
+                    <td *ngFor="let screen of theater.screenList">{{screen.screenId}}</td>
+                    <!-- <td>{{theater.screenList}}</td> -->
+                    <!-- <td>{{theater.managerName}}</td>
+                    <td>{{theater.managerContact}}</td>-->
                  </tr>
             </tbody>
         </table>

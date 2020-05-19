@@ -4,6 +4,7 @@ export class screen{
     screenName:string;
     rows:number;
     columns:number;
+
     
     constructor(theaterId:number,screenName:string, rows:number,columns:number){
         this.theaterId=theaterId;

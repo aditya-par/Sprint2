@@ -1,5 +1,6 @@
 <div class = "container-fluid mb-5">
     <h1>Add Theater</h1>
+    <div class="container">
     <form #addTheaterForm="ngForm" (ngSubmit)="onSubmitAddTheater(addTheaterForm)" novalidate>
 
         <div class="form-group">
@@ -60,6 +61,7 @@
         <button [disabled]="addTheaterForm.form.invalid" class="btn btn-primary" type="submit">Add Theater</button>
 
     </form>
+    </div>
 
     <div class="container" *ngIf="show">
         <h1>Added Theater Detail</h1>

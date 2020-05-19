@@ -13,11 +13,17 @@ export class AllTheaterComponent implements OnInit {
   theaters:theaterResponse[]=[];
   __service:TheaterServiceService;
 
+
   constructor(__service:TheaterServiceService) {
     this.__service=__service;
    }
   ngOnInit(): void {
-    this.__service.fetchAllTheaters().subscribe(theaters =>{this.theaters=theaters});
+    this.__service.fetchAllTheaters().subscribe(theaters =>
+      {
+        this.theaters=theaters
+  });
   }
+  
+    }
+ 
 
-}

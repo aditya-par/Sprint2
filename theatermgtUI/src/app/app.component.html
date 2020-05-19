@@ -1,37 +1,34 @@
-<div style="text-align:center">
-    <h1>Welcome Admin</h1>
-</div>
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
-        <div>
-            <button><a routerLink="/addTheater">Add Theater</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/theaters">All Theaters</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/findTheater">Search Theater</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/deleteTheater">Delete Theater</a></button>
-        </div>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Welcome Admin</a>
+      </div>
 
-        <div>
-            <button><a routerLink="/addScreen">Add Screen</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/screens">All Screens</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/findScreen">Search Screen</a></button>
-        </div>
-        <div>
-            <button><a routerLink="/deleteScreen">Delete Screen</a></button>
-        </div>
+      <div>
+        <li><a style="color: beige;" routerLink="/addTheater">Add Theater</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;" routerLink="/theaters">All Theaters</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;"routerLink="/findTheater">Search Theater</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;" routerLink="/deleteTheater">Delete Theater</a></li>
     </div>
 
-</nav>
-<br/>
-
+    <div>
+        <li><a style="color: beige;" routerLink="/addScreen">Add Screen</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;" routerLink="/screens">All Screens</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;" routerLink="/findScreen">Search Screen</a></li>
+    </div>
+    <div>
+        <li><a style="color: beige;"routerLink="/deleteScreen">Delete Screen</a></li>
+    </div>
+    </div>
+  </nav>
 <router-outlet></router-outlet>

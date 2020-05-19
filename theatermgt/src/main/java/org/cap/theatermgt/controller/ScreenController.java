@@ -71,6 +71,7 @@ public class ScreenController {
 		screen.setRows(screenDto.getRows());
 		screen.setScreenName(screenDto.getScreenName());
 		screen.setTheaterId(screenDto.getTheaterId());
+		screen.setShowList(addShow());
 		return screen;
 	}
 	

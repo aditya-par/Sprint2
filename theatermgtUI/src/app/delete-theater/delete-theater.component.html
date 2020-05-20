@@ -1,6 +1,7 @@
 <div class = "container-fluid mb-5">
-    <h1>Delete Theater</h1>
+    <h1 style="text-align: center;">Delete Theater</h1>
     <div class="container">
+        <div class="jumbotron">
     <form #deleteForm = "ngForm" (ngSubmit)="deleteTheater(deleteForm)">
         <div class="form-group">
             <label class="form-group'level">Theater Id</label>
@@ -19,6 +20,7 @@
 
         <button [disabled]="deleteForm.form.invalid" class="btn btn-primary" type="submit">Delete</button>
     </form>
+    </div>
     </div>
 </div>
 <div class="container" *ngIf="show">

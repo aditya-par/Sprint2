@@ -2,6 +2,7 @@ package org.cap.theatermgt.controller;
 
 import java.util.*;
 
+
 import org.cap.theatermgt.dto.CreateTheaterRequest;
 import org.cap.theatermgt.dto.TheaterDetailsDto;
 import org.cap.theatermgt.entities.Theater;
@@ -12,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/theaters")
 public class TheaterController {
 
@@ -32,6 +31,11 @@ public class TheaterController {
 	@Autowired
 	private ITheaterService service;
 
+	/**
+	 * Adding theater
+	 * @param thaeterDto
+	 * @return
+	 */
 	@PostMapping("/add")
 	public ResponseEntity<TheaterDetailsDto> addTheater(@RequestBody CreateTheaterRequest theaterDto) {
 		Theater theater = convert(theaterDto);
@@ -41,6 +45,10 @@ public class TheaterController {
 		return response;
 	}
 
+	/**
+	 * Fetching all theaters
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<List<Theater>> fetchAll() {
 		List<Theater> theaters = service.fetchAll();
@@ -48,6 +56,11 @@ public class TheaterController {
 		return response;
 	}
 
+	/**
+	 * Fetching theater by theater id
+	 * @param theaterId
+	 * @return
+	 */
 	@GetMapping("/get/{id}")
 	public ResponseEntity<TheaterDetailsDto> fetchById(@PathVariable("id") int theaterId) {
 		Theater theater = service.fetchById(theaterId);
@@ -56,6 +69,11 @@ public class TheaterController {
 		return response;
 	}
 
+	/**
+	 * Deleting theater by theater id
+	 * @param theaterId
+	 * @return
+	 */
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Boolean> deleteTheater(@PathVariable("id") int theaterId) {
 		Boolean result = service.delete(theaterId);
@@ -63,6 +81,11 @@ public class TheaterController {
 		return response;
 	}
 
+	/**
+	 * convert from theater: dto -> entity
+	 * @param theaterDto
+	 * @return
+	 */
 	public Theater convert(CreateTheaterRequest theaterdto) {
 		Theater theater = new Theater();
 		theater.setTheaterId(theaterdto.getTheaterId());
@@ -74,6 +97,11 @@ public class TheaterController {
 		return theater;
 	}
 	
+	/**
+	 * convert from theater: entity -> detailsdto
+	 * @param app
+	 * @return
+	 */
 	public TheaterDetailsDto convertTheaterDetails(Theater theater) {
 		TheaterDetailsDto detailsDto = new TheaterDetailsDto();
 		detailsDto.setTheaterId(theater.getTheaterId());

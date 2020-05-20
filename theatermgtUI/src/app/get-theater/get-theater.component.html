@@ -1,5 +1,5 @@
 <div class = "container-fluid mb-5">
-    <h1>Get Theater Detail</h1>
+    <h1 style ="text-align: center;">Get Theater Detail</h1>
     <div class="container">
     <form #getTheaterForm = "ngForm" (ngSubmit)="getTheater(getTheaterForm)">
         <div class="form-group">
@@ -23,6 +23,7 @@
 
 
     <div class="container" *ngIf="check">
+        <h1 style="text-align: center;">Theater detail</h1>
         <table class="table">
             <tr>
                 <th>Theater Id</th><td>{{theater.theaterId}}</td>

@@ -31,7 +31,11 @@ public class ScreenController {
 	@Autowired
 	private IScreenService screenService;
 	
-	
+	/**
+	 * Adding Screen to theater
+	 * @param screenDto
+	 * @return
+	 */
 	@PostMapping("/add")
 	public ResponseEntity<ScreenDetailsDto> addScreen(@RequestBody CreateScreenRequest screenDto){
 		Screen screen = convertScreen(screenDto);
@@ -41,6 +45,10 @@ public class ScreenController {
 		return response;
 	}
 
+	/**
+	 * Fetching all screens
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<List<Screen>> fetchAll()
 	{
@@ -49,6 +57,11 @@ public class ScreenController {
 		return response;
 	}
 	
+	/**
+	 * Fetching screen by screen id
+	 * @param screenId
+	 * @return
+	 */
 	@GetMapping("/get/{id}")
 	public ResponseEntity<ScreenDetailsDto> fetchScreens(@PathVariable("id") int screenId) {
 		Screen screen = screenService.fetchScreenById(screenId);
@@ -57,6 +70,11 @@ public class ScreenController {
 		return response;
 	}
 
+	/**
+	 * Deleting screen by screen id
+	 * @param screenId
+	 * @return
+	 */
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Boolean> deleteScreen(@PathVariable("id") int screenId){
 		Boolean result = screenService.delete(screenId);

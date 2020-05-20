@@ -1,5 +1,5 @@
 <div class = "container-fluid mb-5">
-    <h1>Get Screen</h1>
+    <h1 style="text-align: center;">Get Screen</h1>
     <div class="container">
         <form #screenForm="ngForm" (ngSubmit)="getScreen(screenForm)" novalidate>
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="container" *ngIf="check">
-        <h1>Screen details</h1>
+        <h1  style="text-align: center;">Screen details</h1>
         <table class="table">
             <tr>
                 <th>Screen Id</th><td>{{screen.screenId}}</td>
